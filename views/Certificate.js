@@ -5,7 +5,7 @@ import { printToFileAsync } from 'expo-print';
 import { shareAsync } from 'expo-sharing';
 import { useRoute } from '@react-navigation/native';
 import RenderHtml from 'react-native-render-html';
-import { collection, query, doc, getDocs, getDoc } from "firebase/firestore";
+import { collection, query, getDocs } from "firebase/firestore";
 import { db } from '../components/config';
 
 
@@ -26,127 +26,105 @@ export default function Certificate(props) {
     querySnapshot.forEach((doc) => {
       avaliates.push(doc.data().total);
     });
-    const soma = (avaliates.reduce((media,v) =>  media = media + v , 0 ))
-    setMedia((soma/(avaliates.length)))
+    const soma = (avaliates.reduce((media, v) => media = media + v, 0))
+    setMedia((soma / (avaliates.length)).toFixed(2))
+  }
+
+  const formatDate = () => {
+    let date = new Date();
+
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+
+    return `${day}/${month}/${year}`;
+
   }
 
   useEffect(() => {
     takeInfo();
   }, []);
 
-  const source = {
-    html: `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Academic Certificate</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                max-width: 800px;
-                margin: 0 auto;
-                padding: 20px;
-                border: 1px solid #ccc;
-                background-color: #f9f9f9;
-            }
-            .title {
-                font-size: 24px;
-                font-weight: bold;
-                text-align: center;
-                margin-bottom: 20px;
-            }
-            .recipient {
-                font-size: 18px;
-                text-align: center;
-                margin-bottom: 20px;
-            }
-            .grades {
-                font-size: 16px;
-                margin-bottom: 20px;
-            }
-            .signature {
-                font-size: 16px;
-                font-weight: bold;
-                text-align: right;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="title">Academic Certificate</div>
-        <div class="recipient">
-            This is to certify that<br>
-            <strong>${nome}</strong><br>
-            has successfully completed the course with the following grades:
-        </div>
-        <div class="grades">
-            <p>Nota Media durante curso: ${media}</p>
-        </div>
-        <div class="signature">
-            <p>Signature:</p>
-            <p>[Your Name]</p>
-            <p>[Your Title]</p>
-        </div>
-    </body>
-    </html>
-  `
-  };
-
   const html = `
   <!DOCTYPE html>
   <html lang="en">
-  <head>
+    <head>
       <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Academic Certificate</title>
+      <title>Certificado</title>
       <style>
-          body {
-              font-family: Arial, sans-serif;
-              max-width: 800px;
-              margin: 0 auto;
-              padding: 20px;
-              border: 1px solid #ccc;
-              background-color: #f9f9f9;
-          }
-          .title {
-              font-size: 24px;
-              font-weight: bold;
-              text-align: center;
-              margin-bottom: 20px;
-          }
-          .recipient {
-              font-size: 18px;
-              text-align: center;
-              margin-bottom: 20px;
-          }
-          .grades {
-              font-size: 16px;
-              margin-bottom: 20px;
-          }
-          .signature {
-              font-size: 16px;
-              font-weight: bold;
-              text-align: right;
-          }
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f7f7f7;
+          text-align: center;
+        }
+  
+        .certificate {
+          max-width: 800px;
+          margin: 50px auto;
+          border: 6px solid #263969;
+          padding: 20px;
+          background-color: #fff;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          position: relative;
+        }
+  
+        .header {
+          font-size: 32px;
+          font-weight: bold;
+          margin-bottom: 20px;
+          color: #9acc6a;
+        }
+  
+        .content {
+          font-size: 18px;
+          margin-bottom: 30px;
+          color: #555;
+        }
+  
+        .content p {
+          margin: 5px 0;
+        }
+  
+        .signature img {
+          width: 150px;
+          height: auto;
+          margin-top: 20px;
+        }
+  
+        .signature p {
+          margin-top: 5px;
+          font-size: 16px;
+          font-style: italic;
+          color: #777;
+        }
       </style>
-  </head>
-  <body>
-      <div class="title">Academic Certificate</div>
-      <div class="recipient">
-          This is to certify that<br>
-          <strong>${nome}</strong><br>
-          has successfully completed the course with the following grades:
+    </head>
+    <body>
+      <div class="certificate">
+        <div class="header">Certificado de Participação</div>
+        <div class="content">
+          <img src="https://itemm.com.br/wp-content/uploads/2023/10/Logo-itemm-Colorido-Quadrado-2.png" alt="" width="275">
+  
+          <p>Isso certifica que</p>
+          <p>
+            <strong>${nome}</strong>
+          </p>
+          <p>Finalizou o curso com nota média de</p>
+          <p>
+            <strong>${media}</strong>
+          </p>
+          <p>na data de ${formatDate()}</p>
+        </div>
+        <div class="signature">
+          <img src="https://i.ibb.co/N1SbcFh/Text-Signature.png" alt="Assinatura">
+          <p>Assinatura</p>
+        </div>
       </div>
-      <div class="grades">
-      <p>Nota Media durante curso: ${media}</p>
-      </div>
-      <div class="signature">
-          <p>Signature:</p>
-          <p>[Your Name]</p>
-          <p>[Your Title]</p>
-      </div>
-  </body>
+    </body>
   </html>
     `;
 
@@ -170,10 +148,38 @@ export default function Certificate(props) {
         />
       </View>
       <View style={styles.midContainer}>
-        <RenderHtml
-          contentWidth={width}
-          source={source}
+        
+          <Text style={{fontSize:20, fontStyle: "bold", color: "#98C45A"}}>
+          Certificado de Participação
+          </Text>
+          <Image
+          style={styles.imageCertificate}
+          source={{
+            uri: 'https://itemm.com.br/wp-content/uploads/2023/10/Logo-itemm-Colorido-Quadrado-2.png',
+        }}
+
         />
+
+          <Text style={styles.texto}>
+            Isso certifica que
+          </Text>
+          <Text style={styles.variavel}>
+            {nome}
+          </Text>
+          <Text style={styles.texto}>
+            Finalizou o curso com nota média de
+          </Text>
+          <Text style={styles.variavel}>
+            {media}
+          </Text>
+          <Text style={styles.texto}>
+            Na data de {formatDate()}
+          </Text>
+
+        <Text style={{fontSize: 15, marginTop: 65}}>
+            Assinatura
+          </Text>
+
       </View>
 
       <View style={styles.bottomContainer}>
@@ -218,25 +224,26 @@ const styles = StyleSheet.create({
 
 
   midContainer: {
-    flex: 1,
-    backgroundColor: 'white',
-    justifyContent: "center",
-
-    width: "100%",
-    marginBottom: 130,
+    flex: 6.5,
+    alignItems: "center",
+    borderWidth: 2,
+    borderColor: '#262950',
+    height: 500,
+    borderRadius: 8,
+    fontSize: 14,
+    marginHorizontal: 40,
+    padding: 10,
+    marginTop: 150,
+marginBottom:55
 
 
   },
-
-
   imageLogo: {
     width: 250,
     height: 225,
     alignSelf: 'center',
 
   },
-
-
   button: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -279,17 +286,7 @@ const styles = StyleSheet.create({
 
   },
 
-  placeholder: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    height: 50,
-    borderRadius: 8,
-    fontSize: 14,
-    marginHorizontal: 40,
-    padding: 17,
-    marginTop: 8
-
-  },
+ 
 
   certificado: {
     borderWidth: 1,
@@ -320,8 +317,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 35,
     width: 100,
     marginTop: 5
-
-
   },
 
   back: {
@@ -330,10 +325,24 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
     fontWeight: 'bold'
   },
-  datePicker: {
 
-    height: 120,
-    marginTop: -10,
+  variavel: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginVertical: 5,
+  },
+
+  texto: {
+    fontSize: 15,
+
+  },
+
+  imageCertificate: {
+    width: 200,
+    height: 152,
+    marginTop: 10,
+    marginBottom:10,
+    alignSelf: 'center',
 
   },
 

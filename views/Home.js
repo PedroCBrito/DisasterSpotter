@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#00000000',
     justifyContent: "flex-end",
     marginBottom: 20,
     width: "100%"
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
 
   topContainer: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#00000000',
     justifyContent: "flex-start",
     alignItems: "flex-end",
     marginTop: 25,
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     justifyContent: "center",
-
+    backgroundColor: '#00000000',
     width: "100%",
     marginBottom: 125
 
