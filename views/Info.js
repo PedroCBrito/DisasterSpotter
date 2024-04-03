@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, Switch, ScrollView } from 'react-native';
-import logoITEEM from './Login/imgITEEM.png'
+import logo from './Login/DisasterSpotter.png';
 import { SelectList } from 'react-native-dropdown-select-list';
 import { useRoute } from '@react-navigation/native';
 import { firebase_app, firebase_auth } from '../components/config';
@@ -94,7 +94,7 @@ export default function Info(props) {
       <View style={styles.topContainer}>
         <Image
           style={styles.imageLogo}
-          source={logoITEEM}
+          source={logo}
         />
       </View>
       <View style={styles.midContainer}>

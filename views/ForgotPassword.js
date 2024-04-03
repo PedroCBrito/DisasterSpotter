@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Button, TextInput, StyleSheet, Image, Pressable, KeyboardAvoidingView, ScrollView } from 'react-native';
-import logoITEEM from './Login/imgITEEM.png'
+import logo from './Login/DisasterSpotter.png';
 import { firebase, firebase_auth } from '../components/config';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 
@@ -44,7 +44,7 @@ export default function ForgotPassword(props) {
                     <View style={styles.topContainer}>
                         <Image
                             style={styles.imageLogo}
-                            source={logoITEEM}
+                            source={logo}
                         />
                     </View>
 
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 32,
         borderRadius: 4,
         elevation: 3,
-        backgroundColor: '#252B4F',
+        backgroundColor: '#252E38',
         marginRight: 60,
         marginLeft: 60,
         height: 50

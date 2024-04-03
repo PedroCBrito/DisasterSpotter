@@ -3,20 +3,21 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {getFirestore} from "firebase/firestore";
 import{getAuth} from "firebase/auth";
+import {getStorage} from "firebase/storage"
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
+import "firebase/compat/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDT5wqmKISkTrgIyMFVlSR0kfG7-b9RT7A",
-  authDomain: "itemm-bda8b.firebaseapp.com",
-  projectId: "itemm-bda8b",
-  storageBucket: "itemm-bda8b.appspot.com",
-  messagingSenderId: "969051362783",
-  appId: "1:969051362783:web:7453400cf9fd5b0546e06a",
-  measurementId: "G-H8V9QPZ4NN"
+  apiKey: "AIzaSyD7FHRSz2yVTjfk357dn7jilGNv3yAHkxY",
+  authDomain: "disasterspotter.firebaseapp.com",
+  projectId: "disasterspotter",
+  storageBucket: "disasterspotter.appspot.com",
+  messagingSenderId: "622933777676",
+  appId: "1:622933777676:web:042ae42b02ca5d9a8e3d29",
+  measurementId: "G-5D4ELS77HK"
 };
-
 
 
 
@@ -28,3 +29,5 @@ export const analytics = getAnalytics(firebase_app);
 
 //initialize firestore
 export const db = getFirestore(firebase_app);
+export const storage = getStorage(firebase_app)
+export {firebase};

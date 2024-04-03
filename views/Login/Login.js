@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { ScrollView, View, Text, TextInput, StyleSheet, Image, Pressable, KeyboardAvoidingView, Platform } from 'react-native';
-import logoITEEM from './imgITEEM.png';
-import { firebase_auth } from '../../components/config';
+import logo from './DisasterSpotter.png';
+import { firebase_auth, db } from '../../components/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-
+import { doc, getDoc } from 'firebase/firestore';
 
 
 export default function Login(props) {
@@ -11,13 +11,25 @@ export default function Login(props) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
     const auth = firebase_auth;
 
+   
     const signIn = async () => {
         try {
             const response = await signInWithEmailAndPassword(auth, email, password);
-            console.log(response);
-            props.navigation.navigate('Home')
+            
+            
+            const docRef = doc(db, "usuarios", response.user.uid);
+            const docSnap = await getDoc(docRef);
+            
+
+            if (docSnap.data().admin = true){
+                props.navigation.navigate('HomeAdmin')
+            }else{
+            props.navigation.navigate('HomeUser')
+            }
+
         } catch (error) {
             console.log(error.message);
             if (error.message == "Firebase: Error (auth/invalid-email).") {
@@ -47,7 +59,7 @@ export default function Login(props) {
                 <View style={styles.topContainer}>
                     <Image
                         style={styles.imageLogo}
-                        source={logoITEEM}
+                        source={logo}
                     />
                 </View>
                 <View style={styles.midContainer}>
@@ -219,7 +231,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 32,
         borderRadius: 4,
         elevation: 3,
-        backgroundColor: '#252B4F',
+        backgroundColor: '#252E38',
         marginRight: 60,
         marginLeft: 60,
         height: 50
