@@ -18,7 +18,6 @@ export default function Login(props) {
   const [geoLoc, setGeoLoc] = useState("");
   const [rua, setRua] = useState("");
   const [CEP, setCEP] = useState("");
-  const [geoCodeAdress, setGeoCodeAdress] = useState("");
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
@@ -33,12 +32,15 @@ export default function Login(props) {
       setGeoLoc(currentLocation);
       console.log(currentLocation);
 
-
+      
     };
-    getPermissions();
-    getAddres();
-  }, []);
 
+    
+
+    getPermissions();
+    
+  }, []);
+  
   const getAddres = async () => {
     const reverseGeocode = await Location.reverseGeocodeAsync({
       longitude: geoLoc.coords.longitude,
@@ -53,7 +55,8 @@ export default function Login(props) {
     setRua(endereco)
     setCEP(reverseGeocode[0].postalCode)
 
-  }
+  };
+  
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -101,11 +104,10 @@ export default function Login(props) {
   }
 
   const createReport = async () => {
-
+    getAddres();
     setDate(formatDate());
 
     try {
-      await getAddres();
       const response = await addDoc(collection(db, "reportes"), {
         local: local,
         imagem: imagem,
@@ -113,7 +115,6 @@ export default function Login(props) {
         rua: rua,
         CEP: CEP,
         date: date,
-
 
       });
 

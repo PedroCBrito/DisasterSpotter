@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import login from "./views/Login/Login.js";
+import Login from "./views/Login/Login.js";
 import HomeUser from "./views/HomeUser.js";
 import HomeAdmin from "./views/HomeAdmin.js";
 import Register from "./views/Register.js";
@@ -34,7 +34,7 @@ function App() {
         {user ? (
           <Stack.Screen options={{ title: "", headerTransparent: true }} name="HomeUser" component={HomeUser} />
         ) : (
-          <Stack.Screen options={{ headerTransparent: true, headerShown: false }} name="Login" component={login} />
+          <Stack.Screen options={{ headerTransparent: true, headerShown: false }} name="Login" component={Login} />
         )}
         <Stack.Screen options={{ title: "", headerTransparent: true }} name="HomeAdmin" component={HomeAdmin} />
         <Stack.Screen options={{ title: "", headerTransparent: true }} name="Register" component={Register} />

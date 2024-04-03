@@ -24,12 +24,9 @@ export default function Login(props) {
             const docSnap = await getDoc(docRef);
             
 
-            if (docSnap.data().admin = true){
-                props.navigation.navigate('HomeAdmin')
-            }else{
+            
             props.navigation.navigate('HomeUser')
-            }
-
+            
         } catch (error) {
             console.log(error.message);
             if (error.message == "Firebase: Error (auth/invalid-email).") {
