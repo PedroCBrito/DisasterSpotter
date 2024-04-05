@@ -117,17 +117,15 @@ export default function Login(props) {
         date: date,
 
       });
-
-      alert('Reporte feito com sucesso');
       console.log(response.id)
       uploadImage(response.id);
-
+      props.navigation.navigate('Send');
     } catch (error) {
       alert('Erro ao fazer reporte, preencha os campos necessários\n');
       console.log(error)
     }
 
-
+  props.navigation.navigate('Send')
   }
 
 
