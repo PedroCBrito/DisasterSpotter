@@ -1,10 +1,13 @@
 import React from 'react';
 import { ScrollView, View, Text, TextInput, StyleSheet, Image, Pressable, KeyboardAvoidingView, Platform } from 'react-native';
 import logo from './Login/DisasterSpotter.png';
+import { useRoute } from '@react-navigation/native';
 
 
 
 export default function Send(props) {
+    const route = useRoute();
+    const idAccount = route.params.id;
 
     return (
 
@@ -33,7 +36,7 @@ export default function Send(props) {
                 <View style={styles.bottomContainer}>
                     
 
-                    <Pressable style={styles.goBack} onPress={() => props.navigation.navigate('HomeUser')}>
+                    <Pressable style={styles.goBack} onPress={() => props.navigation.navigate('HomeUser', { id: idAccount })}>
                         <Text style={styles.back}>Voltar</Text>
                     </Pressable>
                 </View>

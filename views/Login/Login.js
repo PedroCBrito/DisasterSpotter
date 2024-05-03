@@ -23,9 +23,15 @@ export default function Login(props) {
             const docRef = doc(db, "usuarios", response.user.uid);
             const docSnap = await getDoc(docRef);
             
+            console.log(docSnap.data().admin)
 
             
-            props.navigation.navigate('HomeUser')
+            if (docSnap.data().admin){//admin
+                props.navigation.navigate('HomeAdmin')
+            }else{
+                props.navigation.navigate('HomeUser', { id: response.user.uid })
+            }//user
+            
             
         } catch (error) {
             console.log(error.message);

@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, Image, Pressable, Platform, TouchableOpacity, KeyboardAvoidingView, ScrollView } from 'react-native';
 import logo from './Login/DisasterSpotter.png';
 import { db, firebase } from '../components/config';
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, query, doc, getDoc } from "firebase/firestore";
 import * as ImagePicker from 'expo-image-picker'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import * as Location from 'expo-location'
+import * as Location from 'expo-location';
+import { useRoute } from '@react-navigation/native';
 
 
-export default function Login(props) {
+export default function HomeUser(props) {
 
 
   const [local, setLocal] = useState("");
@@ -18,7 +19,23 @@ export default function Login(props) {
   const [geoLoc, setGeoLoc] = useState("");
   const [rua, setRua] = useState("");
   const [CEP, setCEP] = useState("");
+  const [nome, setNome] = useState("");
+  const [cpf, setCpf] = useState("");
   const [date, setDate] = useState(new Date());
+
+  const route = useRoute();
+  const id = route.params.id;
+
+  
+
+
+  const takeInfo = async () => {
+    const q = query(doc(db, "usuarios", id));
+    const querySnapshot = await getDoc(q);
+    setNome(querySnapshot.data().nome);
+    setCpf(querySnapshot.data().cpf);
+    
+  }
 
   useEffect(() => {
     const getPermissions = async () => {
@@ -32,21 +49,20 @@ export default function Login(props) {
       setGeoLoc(currentLocation);
       console.log(currentLocation);
 
-      
+
     };
 
-    
-
+    setDate(formatDate());
     getPermissions();
-    
+
   }, []);
-  
+
   const getAddres = async () => {
     const reverseGeocode = await Location.reverseGeocodeAsync({
       longitude: geoLoc.coords.longitude,
       latitude: geoLoc.coords.latitude
     });
-    
+
     console.log("Endereco")
 
     const endereco = reverseGeocode[0].street + " " + reverseGeocode[0].streetNumber;
@@ -56,7 +72,7 @@ export default function Login(props) {
     setCEP(reverseGeocode[0].postalCode)
 
   };
-  
+
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -104,28 +120,32 @@ export default function Login(props) {
   }
 
   const createReport = async () => {
-    getAddres();
-    setDate(formatDate());
+    await getAddres();
+    await takeInfo();
+
 
     try {
       const response = await addDoc(collection(db, "reportes"), {
+        nome: nome,
+        cpf: cpf,
         local: local,
         imagem: imagem,
         comentario: comentario,
         rua: rua,
         CEP: CEP,
         date: date,
+        status: "pendente"
 
       });
       console.log(response.id)
       uploadImage(response.id);
-      props.navigation.navigate('Send');
+      props.navigation.navigate('Send', { id: id });
     } catch (error) {
       alert('Erro ao fazer reporte, preencha os campos necessários\n');
       console.log(error)
     }
 
-  props.navigation.navigate('Send')
+    props.navigation.navigate('Send', { id: id });
   }
 
 
