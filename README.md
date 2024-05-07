@@ -17,18 +17,18 @@ registro dos acontecimentos de forma rápida e de fácil divulgação na hora do
 problema.
 
 ## 3. Imagens do App
-### Telas de Login
-
-<a href="https://ibb.co/0ZkYGPZ"><img src="https://i.ibb.co/sQhsVLQ/Tela-Login-Preenchida.png" alt="Tela Login Preenchida" border="0"></a>
-<a href="https://ibb.co/1rVpCCk"><img src="https://i.ibb.co/QPBqWW4/Tela-Registro-Conta.png" alt="Tela Registrar Conta" border="0"></a>
-<a href="https://ibb.co/wpYsHRt"><img src="https://i.ibb.co/SVJrTPS/Tela-Registro-Conta-Preenchida.png" alt="Tela Registro Conta Preenchida" border="0"></a>
-<a href="https://ibb.co/yBZRTfH"><img src="https://i.ibb.co/XkK4B2c/Esqueceu-Senha.png" alt="Esqueceu Senha" border="0"></a>
+### Tela de Login, registro e esqueceu a senha
+<a href="https://ibb.co/fqK1yZh"><img src="https://i.ibb.co/4KDmXC6/Tela-Login-Preenchida.png" alt="Tela-Login-Preenchida" border="0"></a>
+<a href="https://ibb.co/x7kRbYL"><img src="https://i.ibb.co/BCpSJG3/Tela-Registro-Conta-Preenchida.png" alt="Tela-Registro-Conta-Preenchida" border="0"></a>
+<a href="https://ibb.co/DD2p17C"><img src="https://i.ibb.co/TB3LwH8/Esqueceu-Senha.png" alt="Esqueceu-Senha" border="0"></a>
 ### Telas de Administrador
-<a href="https://ibb.co/F6Bhmyw"><img src="https://i.ibb.co/zsSmQBR/Tela-Admin.png" alt="Tela Administrador" border="0"></a>
-<a href="https://ibb.co/J70MchN"><img src="https://i.ibb.co/cFM7ymP/Tela-Admin-Selecionada.png" alt="Tela Administrador Selecionada" border="0"></a>
-<a href="https://ibb.co/C0XQGxw"><img src="https://i.ibb.co/ZTwxDyf/Tela-Exibir-Negado.png" alt="Tela Exibir Negado" border="0"></a>
-<a href="https://ibb.co/NrmgPdv"><img src="https://i.ibb.co/3vM5q93/Tela-Exibir-Report2.png" alt="Tela Exibir Report2" border="0"></a>
+<a href="https://ibb.co/cQTMZLV"><img src="https://i.ibb.co/SBvWMrG/Tela-Admin.png" alt="Tela-Admin" border="0"></a>
+<a href="https://ibb.co/TBttyNW"><img src="https://i.ibb.co/FbzzpdH/Tela-Admin-Selecionada.png" alt="Tela-Admin-Selecionada" border="0"></a>
+<a href="https://ibb.co/JFphZJ7"><img src="https://i.ibb.co/BK61kMZ/Tela-Exibir-Report1.png" alt="Tela-Exibir-Report1" border="0"></a>
+<a href="https://ibb.co/NsNz78g"><img src="https://i.ibb.co/KXsHmMc/Tela-Exibir-Report2.png" alt="Tela-Exibir-Report2" border="0"></a>
 ### Telas de Usuario
-<a href="https://ibb.co/RjHftj3"><img src="https://i.ibb.co/XYJ16Y7/TelaUser.png" alt="Tela User" border="0"></a>
-<a href="https://ibb.co/kB48y1W"><img src="https://i.ibb.co/vq3PBYK/Tela-User-Preenchida.png" alt="Tela User Preenchida" border="0"></a>
-<a href="https://ibb.co/6WcbQDv"><img src="https://i.ibb.co/3C5WKSf/Tela-Report-Enviado.png" alt="Tela Report Enviado" border="0"></a>
+<a href="https://ibb.co/1Zzyb9N"><img src="https://i.ibb.co/qBJqxR8/Tela-User-Preenchida.png" alt="Tela-User-Preenchida" border="0"></a>
+<a href="https://ibb.co/6rTyKRK"><img src="https://i.ibb.co/2WCFz7z/Tela-Report-Enviado.png" alt="Tela-Report-Enviado" border="0"></a>
+
+
+
