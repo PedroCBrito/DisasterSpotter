@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ITEEM",
-    "slug": "ITEEM",
+    "name": "Disaster_Spotter",
+    "slug": "Disaster_Spotter",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.peudro.Disaster_Spotter"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2b38abc7-f325-4b4f-9753-65f9b90a0368"
+      }
     }
   }
 }

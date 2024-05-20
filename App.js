@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from "./views/Login/Login.js";
@@ -10,8 +9,7 @@ import ForgotPassword from "./views/ForgotPassword.js";
 import Review from './views/Review.js';
 import Info from "./views/Info.js";
 import Send from './views/Send.js';
-import { onAuthStateChanged } from 'firebase/auth';
-import { firebase_auth } from './components/config.jsx';
+
 
 
 
@@ -20,15 +18,6 @@ function App() {
 
   const Stack = createNativeStackNavigator();
 
-  const [user, setUser] = useState();
-
-
-  useEffect(() => {
-    onAuthStateChanged(firebase_auth, (user) => {
-      setUser(user);
-    });
-
-  }, []);
 
   return (
     <NavigationContainer>
