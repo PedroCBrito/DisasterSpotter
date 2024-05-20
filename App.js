@@ -7,7 +7,6 @@ import HomeAdmin from "./views/HomeAdmin.js";
 import Register from "./views/Register.js";
 import ForgotPassword from "./views/ForgotPassword.js";
 import Review from './views/Review.js';
-import Info from "./views/Info.js";
 import Send from './views/Send.js';
 
 
@@ -27,7 +26,6 @@ function App() {
         <Stack.Screen options={{ title: "", headerTransparent: true }} name="HomeUser" component={HomeUser} />
         <Stack.Screen options={{ title: "", headerTransparent: true }} name="Register" component={Register} />
         <Stack.Screen options={{ title: "", headerTransparent: true }} name="ForgotPassword" component={ForgotPassword} />
-        <Stack.Screen options={{ title: "", headerTransparent: true }} name="Info" component={Info} />
         <Stack.Screen options={{ title: "", headerTransparent: true }} name="Send" component={Send} />
         <Stack.Screen options={{ title: "", headerTransparent: true }} name="Review" component={Review} />
       </Stack.Navigator>
